@@ -16,7 +16,7 @@ public class MessageService {
     @KafkaListener(
             groupId = "${spring.kafka.consumer.group-id}",
             topics = "${spring.kafka.test.topic}",
-            containerFactory = "kafkaListenerContainerFactory"
+            containerFactory = "singleFactory"
     )
     public void consumeMessages(EmailDTO email) {
         log.info("CONSUMED: " + email);

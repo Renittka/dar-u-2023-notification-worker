@@ -15,6 +15,8 @@ public class EmailService {
     private final JavaMailSender javaMailSender;
 
     public void sendSimpleMail(EmailDTO email) {
+
+        log.info("EMAIL TO SEND: " + email);
         try {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
 
