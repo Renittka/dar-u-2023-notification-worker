@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -18,9 +21,9 @@ public class MessageService {
             topics = "${spring.kafka.test.topic}",
             containerFactory = "singleFactory"
     )
-    public void consumeMessages(EmailDTO email) {
+    public void consumeMessages(EmailDTO email) throws MessagingException, IOException {
         log.info("CONSUMED: " + email);
-        emailService.sendSimpleMail(email);
+        emailService.sendEmailWithAttachment(email);
     }
 
 }
